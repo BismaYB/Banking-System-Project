@@ -1,0 +1,108 @@
+class BankAccount:
+    def __init__(self, name, password, balance=0,loan_balance=0):
+        self.name = name
+        self.password = password
+        self.balance = balance
+        self.loan_balance=loan_balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print("amount",amount," deposited successfully,Current balance:",self.balance,"$")
+        else:
+            print("Invalid amount for deposit.")
+
+    def withdraw(self, amount):
+        if amount > 0 and amount <= self.balance:
+            self.balance -= amount
+            print("Amount",amount,"withdrawn successfully. Current balance:",self.balance,"$")
+        else:
+            print("Insufficient funds or invalid amount for withdrawal.")
+
+    def display_balance(self):
+        print("Account Holder:",self.name, "Current Balance:",self.balance,"$")
+
+    def account_details(self):
+        print("Account Holder:",self.name,"\nCurrent Balance:",self.balance,"$")
+
+
+    def cash_transfer(self, amount):
+        if amount > 0 and amount <= self.balance:
+            self.balance -= amount
+            print("Amount",amount,"$ transferred to successfully.")
+            print("Current balance after transfer:",self.balance,"$")
+        else:
+            print("Insufficient funds or invalid amount for transfer.")
+
+    def request_loan(self,amount):
+        if amount>0:
+            self.loan_balance=+amount
+            self.balance=+amount
+            print("loan amount",amount,"is approved current balance is",self.balance,"$")
+        else:
+            print("enter valid amount")
+
+
+def user_account():
+    print("WELCOME TO 'SYA' BANKING,HAVE A GREAT DAY")
+    users = {}
+
+    while True:
+        print("\nOptions:")
+        print("1. Create Account")
+        print("2. Login")
+        print("3. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            name = input("Enter your name: ")
+            password = input("Create a password: ")
+            users[name] = BankAccount(name, password)
+            print("Account created successfully.")
+        elif choice == '2':
+            name = input("Enter your name: ")
+            password = input("Enter your password: ")
+            if name in users and users[name].password == password:
+                print("Login successful.")
+                current_account = users[name]
+                while True:
+                    print("\nOptions:")
+                    print("1. Deposit")
+                    print("2. Withdraw")
+                    print("3. Display Balance")
+                    print("4. Account Details")
+                    print("5. Cash Transfer")
+                    print("6. loan request")
+                    print("7. Logout")
+                    choice = input("Enter your choice: ")
+
+                    if choice == '1':
+                        amount = float(input("Enter amount to deposit: "))
+                        current_account.deposit(amount)
+                    elif choice == '2':
+                        amount = float(input("Enter amount to withdraw: "))
+                        current_account.withdraw(amount)
+                    elif choice == '3':
+                        current_account.display_balance()
+                    elif choice == '4':
+                        current_account.account_details()
+                    elif choice == '5':
+                        amount = float(input("Enter amount to transfer: "))
+                        current_account.cash_transfer(amount)
+                    elif choice=='6':
+                        amount = float(input("Enter loan amount: "))
+                        current_account.request_loan(amount)
+                    elif choice == '7':
+                        print("Logged out successfully.")
+                        break
+                    else:
+                        print("Invalid choice. Please try again.")
+            else:
+                print("Invalid username or password.")
+        elif choice == '3':
+            print("Thank you for using the Banking System.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+user_account()
