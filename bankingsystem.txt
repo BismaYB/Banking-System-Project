@@ -36,8 +36,8 @@ class BankAccount:
 
     def request_loan(self,amount):
         if amount>0:
-            self.loan_balance=+amount
-            self.balance=+amount
+            self.loan_balance+=amount
+            self.balance+=amount
             print("loan amount",amount,"is approved current balance is",self.balance,"$")
         else:
             print("enter valid amount")
