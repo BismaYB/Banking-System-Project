@@ -25,8 +25,10 @@ once logged in user can perform  banking opertion without any restriction
 
 deposit and Withdrwal : user can deposit the amount to thier account and
 withdrw money
+
 cash transfer: user can transfer cash to some one in easily way
-account deatils and  current balance can also check
+
+account deatils and  current balance can also check,
 if user want any loan their is a loan request option is also thier
 for security after used, user can logout the account
 
