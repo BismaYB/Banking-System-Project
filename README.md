@@ -24,7 +24,7 @@ login :user name and password used to login to the account
 once logged in user can perform  banking opertion without any restriction
 
 deposit and Withdrwal : user can deposit the amount to thier account and
-withdrw money
+withdraw money
 
 cash transfer: user can transfer cash to some one in easily way
 
